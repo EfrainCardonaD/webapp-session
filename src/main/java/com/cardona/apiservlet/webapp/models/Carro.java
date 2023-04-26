@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class Carro {
-    private List<ItemCarro> items;
+    private final List<ItemCarro> items;
 
     public Carro() {
         this.items = new ArrayList<>();
@@ -35,7 +35,7 @@ public class Carro {
 
     public void removeProducto(String productoId) {
         Optional<ItemCarro> producto = findProducto(productoId);
-        producto.ifPresent(itemCarro -> items.remove(itemCarro));
+        producto.ifPresent(items::remove);
     }
 
     public void updateCantidad(String productoId, int cantidad) {
